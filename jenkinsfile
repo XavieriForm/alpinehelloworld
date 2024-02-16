@@ -68,10 +68,10 @@ pipeline{
         stage ('Deploy in staging') {
             agent any
             environment {
-                HOSTNAME_DEPLOY_STAGING = "ec2-54-152-213-233.compute-1.amazonaws.com"
+                HOSTNAME_DEPLOY_STAGING = "ec2-54-227-194-103.compute-1.amazonaws.com"
             }
             steps {
-                sshagent(credentials: ['SSH_AUTH']) {
+                sshagent(credentials: ['SSH_AUTH_PROD']) {
                     sh '''
                         [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
                         ssh-keyscan -t rsa,dsa ${HOSTNAME_DEPLOY_STAGING} >> ~/.ssh/known_hosts
