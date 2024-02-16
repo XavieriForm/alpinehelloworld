@@ -4,7 +4,6 @@ pipeline{
         DOCKERHUB_AUTH = credentials('DOCKERHUB_AUTH')
         ID_DOCKER = "${DOCKERHUB_AUTH_USR}"
         PORT_EXPOSED = "80"
-    
     }
 
     stages{
@@ -12,7 +11,7 @@ pipeline{
             agent any
             steps {
                 script{
-                    sh "docker build -t ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
+                    sh "docker build -t ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG} ."
                 }
             }
         }
